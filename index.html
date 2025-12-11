@@ -15,61 +15,84 @@
 </head>
 <body>
 
-
+<!-----  Content container  ----->
 <div class="container mt-5 text-center" >
-    <button type="button" class="btn btn-dark" onclick="placeOrder()">place Order</button>
-    
-    <div class="card-body text-center mt-2">
-    <div class="card" style="width: 18rem;">
-        <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>John</td>
-      <td>Doe</td>
-      <td>@social</td>
-    </tr>
-  </tbody>
-</table>
-    <div class="card-footer">
-    Card footer
-    <div class="card">
-    <div class="card-header">
-    Featured
-  </div>
-  <div class="card-body">
-    <p class="card-text">Order status</p>
-    <a href="#" class="btn btn-danger">Cancel</a>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+
+    <!-----  Place Order Button  ----->
+    <button type="button" class="btn btn-dark" onclick="placeOrder()">
+      Place Order
+    </button>
+
+    <div class="row"> <!--  start of grid row container-->
+      <div class="col-lg-4 col-md-6"> <!-- start of grid column container -->
+      <!--NOTE - lg-4 spans 4 columns so 3 cards shown on a lg screen and md-6 spans 2 cols so 2 cards will show on a medium screen-->
+
+        <!-----  Card 1  ----->
+        <!-- start of card 1 -->
+        <div class="card text-center mt-4"> <!--start of card 1-->
+
+            <div class="card-header">
+              Order Number: 1
+            </div>
+
+            <div class="card-body">
+              
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Margherita Pizza</td>
+                    <td>1</td>
+                    <td>£13.99</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Cheeseburger</td>
+                    <td>2</td>
+                    <td>£19.98</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Fries</td>
+                    <td>2</td>
+                    <td>£5.98</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p class="card-text">Order status: Order confirmed ✅ </p>
+
+              <a href="#" class="btn btn-danger btn-sm">Cancel</a>
+            </div>
+
+            <div class="card-footer text-body-secondary">
+              2 days ago
+            </div>
+
+        </div> 
+          <!----  end of Card 1 ---->   
+
+      </div> <!-- end of grid column container -->
+    </div> <!-- end of grid row container-->
+
+
+
+
 </div>
+<!-----  End of content container  ----->
     
 
 <script> // ORDER PROCESSING JS
-    /*
+    /* Notes about the async code operation
+
         - Example: Order tracking app
           - Instantly: Order confirmed ✅
           - After 2 seconds: Order is being prepared 🍜
@@ -80,8 +103,9 @@
           - After 4 seconds: Order has been delivered 😋
 
           Total processing time for order: 32 seconds
-    
 
+    */
+    
     const orderBeingPrepared = () => new Promise((resolve, reject) => {
       setTimeout(() => {
         console.log('Order is being prepared 🍜')
@@ -163,3 +187,60 @@
 
 </body>
 </html>
+
+<!-- Duplicate code -->
+
+ <!-----  Card 1  ----->
+    <!-- start of card 1
+    <div class="card text-center mt-4">  start of card 1
+    -->
+    <!--
+        <div class="card-header">
+          Order Number: 1
+        </div>
+
+        <div class="card-body">
+          
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Item</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Margherita Pizza</td>
+                <td>1</td>
+                <td>£13.99</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Cheeseburger</td>
+                <td>2</td>
+                <td>£19.98</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Fries</td>
+                <td>2</td>
+                <td>£5.98</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="card-text">Order status: Order confirmed ✅ </p>
+
+          <a href="#" class="btn btn-danger btn-sm">Cancel</a>
+        </div>
+
+        <div class="card-footer text-body-secondary">
+          2 days ago
+        </div>
+
+      </div> -->
+      <!----  end of Card 1 ---->   
+
