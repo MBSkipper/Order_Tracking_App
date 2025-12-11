@@ -15,55 +15,62 @@
     
     const orderBeingPrepared = () => new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log('Order is being prepared 🍜')
+        //console.log('Order is being prepared 🍜')
+        document.getElementById('order-status').innerText = 'Order is being prepared 🍜'
         resolve()
       }, 2000)
     })
 
     const orderPrepared = () => new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log('Order prepared 🎉')
+        //console.log('Order prepared 🎉')
+        document.getElementById('order-status').innerText = 'Order prepared 🎉'
         resolve()
       }, 10000)
     })
 
     const orderHandedOver = () => new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log('Order handed over to the delivery person 📦')
+        //console.log('Order handed over to the delivery person 📦')
+         document.getElementById('order-status').innerText = 'Order handed to the delivery person 📦'
         resolve()
       }, 5000)
     })
 
     const orderOnTheWay = () => new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log('Order is on the way 🚴')
+        //console.log('Order is on the way 🚴')
+        document.getElementById('order-status').innerText = 'Order is on the way 🚴'
         resolve()
       }, 3000)
     })
 
     const orderReachedDestintaion = () => new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log(`Order reached it's destination 📍`)
+        //console.log(`Order reached it's destination 📍`)
+        document.getElementById('order-status').innerText = `Order reached its destination 📍`
         resolve()
       }, 8000)
     })
 
     const orderDelivered = () => new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log(`Order has been delivered 😋`)
+        //console.log(`Order has been delivered 😋`)
+        document.getElementById('order-status').innerText = `Order has been delivered 😋`
         resolve()
       }, 4000)
     })
 
     const placeOrder = () => {
-      console.log('Order confirmed ✅')
+      //console.log('Order confirmed ✅')
+      document.getElementById('order-status').innerText = 'Order confirmed ✅'
       orderBeingPrepared()
         .then(() => orderPrepared())
         .then(() => orderHandedOver())
         .then(() => orderOnTheWay())
         .then(() => orderReachedDestintaion())
         .then(() => orderDelivered())
-        .then(() => console.log('Enjoy your meal ✅'))
+        .then(() => console.log('Order processing completed'))
         .catch(() => console.log('Something went wrong'))
     }
 
