@@ -81,9 +81,6 @@
         .then(() => orderDelivered())
         .then(() => console.log('Order processing completed'))
         .catch(() => console.log('Something went wrong'))
-
-      orderNum++ //increments const orderNum ready for next card
-
     }
 
 //__________ CREATING A NEW ORDER CARD _____________
@@ -142,11 +139,11 @@ function createOrderCard() {
 
   const orderStatusImg = document.createElement('img')
   orderStatusImg.src = ''
-  orderStatusImg.id = 'order-status-img'
+  orderStatusImg.id = `order-status-img-${orderNum}`
   orderStatusImg.width = '75'
 
   const orderStatusTxt = document.createElement('p')
-  orderStatusTxt.id = 'order-status-txt'
+  orderStatusTxt.id = `order-status-txt-${orderNum}`
   orderStatusTxt.classList.add('card-text')
   
   const cancelBtn = document.createElement('button')
@@ -163,6 +160,8 @@ function createOrderCard() {
   cardDiv.append(cardHeaderDiv, cardBodyDiv, cardFooterDiv)
   colDiv.append(cardDiv)
   orderList.append(colDiv)
+
+  orderNum++ //increments const orderNum ready for next card 
 
 }
 
