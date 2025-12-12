@@ -62,6 +62,9 @@
     })
 
     const placeOrder = () => {
+      
+      createOrderCard()
+
       document.getElementById('order-status-img').src='assets/order-confirmed.gif'
       document.getElementById('order-status-txt').innerText = 'Order confirmed ✅'
       orderBeingPrepared()
@@ -72,10 +75,94 @@
         .then(() => orderDelivered())
         .then(() => console.log('Order processing completed'))
         .catch(() => console.log('Something went wrong'))
+
     }
 
 
+function createOrderCard() {
+  const orderList = document.getElementById('order-list')
+  
+  const col = document.createElement('div')
+  col.classList.add('col-xl-4', 'col-md-6')
 
+  orderList.append(col)
+
+}
+
+/*
+    <div class="col-xl-4 col-md-6"> <!--start of grid column container -->
+      <!--NOTE -the code col-lg-4 spans 4 columns so 3 cards shown on a lg screen and col-md-6 spans 2 cols so 2 cards will show on a medium screen.  Remember there are 12 columns on every screen-->
+
+        <!-----  Card 1  ----->
+        <!-- start of card 1 -->
+        <div class="card text-center mt-4"> <!--start of card 1-->
+
+            <div class="card-header">
+              Order Number: 1
+            </div>
+
+            <div class="card-body">
+              
+              <!-- start of table -->
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Margherita Pizza</td>
+                    <td>1</td>
+                    <td>£14.00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Cheeseburger</td>
+                    <td>2</td>
+                    <td>£21.00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Skinny Fries</td>
+                    <td>2</td>
+                    <td>£6.00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Total</th>
+                    <td></td>
+                    <td></td>
+                    <td>£41.00</td>
+                  </tr>
+
+
+                </tbody>
+              </table>
+              <!-- end of table -->
+              
+              <!-- order status image-->
+              <img src="assets/order-confirmed.gif" id="order-status-img" width="75"> <!--HERE-->
+
+              <!-- order status text-->
+              <p class="card-text" id="order-status-txt">Order status: Order confirmed ✅ </p>
+
+              <!-- cancel button -->
+              <a href="#" class="btn btn-danger btn-sm">Cancel</a>
+            </div>
+
+            <div class="card-footer text-body-secondary">
+              2 days ago
+            </div>
+
+        </div> 
+        <!----  end of Card 1 ---->   
+
+      </div> <!-- end of grid column container -->
+*/
 
 
     /* ---------------------------- */
