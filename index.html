@@ -19,90 +19,19 @@
 <div class="container mt-5 text-center" >
 
     <!-----  Place Order Button  ----->
-    <button type="button" class="btn btn-dark" onclick="placeOrder()">
+    <button type="button" class="btn btn-light" onclick="placeOrder()">
       Place Order
     </button>
 
     <div class="row" id="order-list"> <!--  start of grid row container-->
-      <!--<div class="col-xl-4 col-md-6">--> <!-- start of grid column container -->
+      <!--<div class="col-xl-4 col-md-6">--> <!-- start of grid column container now removed to js to be created in each new card-->
       <!--NOTE -the code col-lg-4 spans 4 columns so 3 cards shown on a lg screen and col-md-6 spans 2 cols so 2 cards will show on a medium screen.  Remember there are 12 columns on every screen-->
 
-        <!-----  Card 1  ----->
-        <!-- start of card 1 -->
-        <!--<div class="card text-center mt-4">--> <!--start of card 1-->
-
-            <!--<div class="card-header">
-              Order Number: 1
-            </div>
-
-            <div class="card-body"> -->
-              
-              <!-- start of table -->
-              <!--<table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Item</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Margherita Pizza</td>
-                    <td>1</td>
-                    <td>£14.00</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Cheeseburger</td>
-                    <td>2</td>
-                    <td>£21.00</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Skinny Fries</td>
-                    <td>2</td>
-                    <td>£6.00</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Total</th>
-                    <td></td>
-                    <td></td>
-                    <td>£41.00</td>
-                  </tr>
-
-
-                </tbody>
-              </table> -->
-              <!-- end of table -->
-              
-              <!-- order status image-->
-              <!--<img src="" id="order-status-img" width="75">-->
-
-              <!-- order status text-->
-              <!--<p class="card-text" id="order-status-txt"></p> -->
-
-              <!-- cancel button -->
-              <!-- <button class="btn btn-danger btn-sm">Cancel</button>
-            </div>
-
-            <div class="card-footer text-body-secondary">
-              2 days ago
-            </div>
-
-        </div> -->
-        <!----  end of Card 1 ---->   
-
-      <!-- </div> - end of grid column container --> 
     </div> <!-- end of grid row container-->
 
 
 </div>
 <!-----  End of content container  ----->
-    
-
 
 
   <!--BOOTSTRAP LINKS -->
@@ -115,7 +44,7 @@
 </body>
 </html>
 
-<!-- Duplicate code -->
+<!-- DUPLICATE CODE this is the card content which sits inside the grid column container now created in js file -->
 
  <!-----  Card 1  ----->
     <!-- start of card 1
@@ -159,7 +88,7 @@
             </tbody>
           </table>
 
-          <p class="card-text">Order status: Order confirmed ✅ </p>
+          <p class="card-text">Order status: Order confirmed </p>
 
           <a href="#" class="btn btn-danger btn-sm">Cancel</a>
         </div>

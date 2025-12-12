@@ -152,8 +152,7 @@ function createOrderCard() {
 }
 
 /*
-
- 
+____________OVERVIEW OF THE APP__________
  - Example: Order tracking app
           - Instantly: Order confirmed ✅
           - After 2 seconds: Order is being prepared 🍜
@@ -164,9 +163,22 @@ function createOrderCard() {
           - After 4 seconds: Order has been delivered 😋
 
           Total processing time for order: 32 seconds
+
+    /* ---------------------------- 
+    // const placeOrder = () => {
+    //   console.log('Order confirmed ✅')
+    //   orderBeingPrepared()
+    //     .then(orderPrepared)
+    //     .then(orderHandedOver)
+    //     .then(orderOnTheWay)
+    //     .then(orderReachedDestintaion)
+    //     .then(orderDelivered)
+    //     .then(() => console.log('Enjoy your meal ✅'))
+    //     .catch(() => console.log('Something went wrong'))
+    // }
   
-
-
+    
+    ___ DUPLICATE CODE - USED TO CREATE ORDER CARD IN js _____
     <div class="col-xl-4 col-md-6"> <!--start of grid column container -->
       <!--NOTE -the code col-lg-4 spans 4 columns so 3 cards shown on a lg screen and col-md-6 spans 2 cols so 2 cards will show on a medium screen.  Remember there are 12 columns on every screen-->
 
@@ -201,16 +213,3 @@ function createOrderCard() {
       </div> <!-- end of grid column container -->
 */
 
-
-    /* ---------------------------- */
-    // const placeOrder = () => {
-    //   console.log('Order confirmed ✅')
-    //   orderBeingPrepared()
-    //     .then(orderPrepared)
-    //     .then(orderHandedOver)
-    //     .then(orderOnTheWay)
-    //     .then(orderReachedDestintaion)
-    //     .then(orderDelivered)
-    //     .then(() => console.log('Enjoy your meal ✅'))
-    //     .catch(() => console.log('Something went wrong'))
-    // }
