@@ -82,10 +82,27 @@
 function createOrderCard() {
   const orderList = document.getElementById('order-list')
   
-  const col = document.createElement('div')
-  col.classList.add('col-xl-4', 'col-md-6')
+  const colDiv = document.createElement('div')
+  colDiv.classList.add('col-xl-4', 'col-md-6')
 
-  orderList.append(col)
+  const cardDiv = document.createElement('div')
+  cardDiv.classList.add('card', 'text-center', 'mt-4')
+
+  const cardHeaderDiv = document.createElement('div')
+  cardHeaderDiv.classList.add('card-header')
+  cardHeaderDiv.innerText = `Order No. 1`
+  
+  const cardBodyDiv = document.createElement('div')
+  cardBodyDiv.classList.add('card-body')
+  cardBodyDiv.innerText = `Order No. 1`
+
+  const cardFooterDiv = document.createElement('div')
+  cardFooterDiv.classList.add('card-footer', 'text-body-secondary')
+  cardFooterDiv.innerText = `12/12/2025 10:01:34 AM`
+
+  cardDiv.append(cardHeaderDiv, cardBodyDiv, cardFooterDiv)
+  colDiv.append(cardDiv)
+  orderList.append(colDiv)
 
 }
 
