@@ -12,11 +12,12 @@
           Total processing time for order: 32 seconds
     */
 
-    
+    //_______ ORDER PROCESSING ON THE CARD (ASYNCHRONOUS)__________
+
     const orderBeingPrepared = () => new Promise((resolve, reject) => {
       setTimeout(() => {
         document.getElementById('order-status-img').src='assets/order-being-prepared.gif'
-        document.getElementById('order-status-txt').innerText = 'Order is being prepared 🍜'
+        document.getElementById('order-status-txt').innerText = 'Order is being prepared'
         resolve()
       }, 2000)
     })
@@ -24,7 +25,7 @@
     const orderPrepared = () => new Promise((resolve, reject) => {
       setTimeout(() => {
         document.getElementById('order-status-img').src='assets/order-is-ready.gif'
-        document.getElementById('order-status-txt').innerText = 'Order prepared 🎉'
+        document.getElementById('order-status-txt').innerText = 'Order prepared'
         resolve()
       }, 10000)
     })
@@ -32,7 +33,7 @@
     const orderHandedOver = () => new Promise((resolve, reject) => {
       setTimeout(() => {
         document.getElementById('order-status-img').src='assets/order-handed-over.gif'
-         document.getElementById('order-status-txt').innerText = 'Order handed to the delivery person 📦'
+         document.getElementById('order-status-txt').innerText = 'Order handed to the delivery person'
         resolve()
       }, 5000)
     })
@@ -40,7 +41,7 @@
     const orderOnTheWay = () => new Promise((resolve, reject) => {
       setTimeout(() => {
         document.getElementById('order-status-img').src='assets/order-on-the-way.gif'
-        document.getElementById('order-status-txt').innerText = 'Order is on the way 🚴'
+        document.getElementById('order-status-txt').innerText = 'Order is on the way'
         resolve()
       }, 3000)
     })
@@ -48,7 +49,7 @@
     const orderReachedDestintaion = () => new Promise((resolve, reject) => {
       setTimeout(() => {
         document.getElementById('order-status-img').src='assets/order-at-destination.gif'
-        document.getElementById('order-status-txt').innerText = `Order reached its destination 📍`
+        document.getElementById('order-status-txt').innerText = `Order reached its destination`
         resolve()
       }, 8000)
     })
@@ -56,17 +57,22 @@
     const orderDelivered = () => new Promise((resolve, reject) => {
       setTimeout(() => {
         document.getElementById('order-status-img').src='assets/order-delivered.gif'
-        document.getElementById('order-status-txt').innerText = `Order has been delivered 😋`
+        document.getElementById('order-status-txt').innerText = `Order has been delivered`
         resolve()
       }, 4000)
     })
 
+    //__________ CREATING AN ORDER NUMBER _____________
+    let orderNum = 1 // creates the order number
+
+    //__________ PLACING THE ORDER _____________
     const placeOrder = () => {
       
       createOrderCard()
 
       document.getElementById('order-status-img').src='assets/order-confirmed.gif'
-      document.getElementById('order-status-txt').innerText = 'Order confirmed ✅'
+      document.getElementById('order-status-txt').innerText = 'Order confirmed '
+
       orderBeingPrepared()
         .then(() => orderPrepared())
         .then(() => orderHandedOver())
@@ -76,9 +82,11 @@
         .then(() => console.log('Order processing completed'))
         .catch(() => console.log('Something went wrong'))
 
+      orderNum++ //increments const orderNum ready for next card
+
     }
 
-
+//__________ CREATING A NEW ORDER CARD _____________
 function createOrderCard() {
   const orderList = document.getElementById('order-list')
   
@@ -90,38 +98,12 @@ function createOrderCard() {
 
   const cardHeaderDiv = document.createElement('div')
   cardHeaderDiv.classList.add('card-header')
-  cardHeaderDiv.innerText = `Order No. 1`
+  cardHeaderDiv.innerText = `Order Number: ${orderNum}`
   
   const cardBodyDiv = document.createElement('div')
   cardBodyDiv.classList.add('card-body')
-  cardBodyDiv.innerText = `Order No. 1`
-
-  const cardFooterDiv = document.createElement('div')
-  cardFooterDiv.classList.add('card-footer', 'text-body-secondary')
-  cardFooterDiv.innerText = `12/12/2025 10:01:34 AM`
-
-  cardDiv.append(cardHeaderDiv, cardBodyDiv, cardFooterDiv)
-  colDiv.append(cardDiv)
-  orderList.append(colDiv)
-
-}
-
-/*
-    <div class="col-xl-4 col-md-6"> <!--start of grid column container -->
-      <!--NOTE -the code col-lg-4 spans 4 columns so 3 cards shown on a lg screen and col-md-6 spans 2 cols so 2 cards will show on a medium screen.  Remember there are 12 columns on every screen-->
-
-        <!-----  Card 1  ----->
-        <!-- start of card 1 -->
-        <div class="card text-center mt-4"> <!--start of card 1-->
-
-            <div class="card-header">
-              Order Number: 1
-            </div>
-
-            <div class="card-body">
-              
-              <!-- start of table -->
-              <table class="table table-striped">
+  cardBodyDiv.innerHTML = 
+              `<table class="table table-striped">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -155,11 +137,49 @@ function createOrderCard() {
                     <td></td>
                     <td>£41.00</td>
                   </tr>
-
-
                 </tbody>
-              </table>
-              <!-- end of table -->
+              </table>`
+
+  const orderStatusImg = document.createElement('img')
+  orderStatusImg.src = ''
+  orderStatusImg.id = 'order-status-img'
+  orderStatusImg.width = '75'
+
+  const orderStatusTxt = document.createElement('p')
+  orderStatusTxt.id = 'order-status-txt'
+  orderStatusTxt.classList.add('card-text')
+  
+  const cancelBtn = document.createElement('button')
+  cancelBtn.classList.add('btn', 'btn-danger', 'btn-sm')
+  cancelBtn.innerText = 'Cancel'
+
+  cardBodyDiv.append(orderStatusImg, orderStatusTxt, cancelBtn)
+
+  const cardFooterDiv = document.createElement('div')
+  cardFooterDiv.classList.add('card-footer', 'text-body-secondary')
+  const currentTime = new Date()
+  cardFooterDiv.innerText = currentTime.toLocaleString()
+
+  cardDiv.append(cardHeaderDiv, cardBodyDiv, cardFooterDiv)
+  colDiv.append(cardDiv)
+  orderList.append(colDiv)
+
+}
+
+/*
+    <div class="col-xl-4 col-md-6"> <!--start of grid column container -->
+      <!--NOTE -the code col-lg-4 spans 4 columns so 3 cards shown on a lg screen and col-md-6 spans 2 cols so 2 cards will show on a medium screen.  Remember there are 12 columns on every screen-->
+
+        <!-----  Card 1  ----->
+        <!-- start of card 1 -->
+        <div class="card text-center mt-4"> <!--start of card 1-->
+
+            <div class="card-header">
+              Order Number: 1
+            </div>
+
+            <div class="card-body">
+              
               
               <!-- order status image-->
               <img src="assets/order-confirmed.gif" id="order-status-img" width="75"> <!--HERE-->
