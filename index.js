@@ -15,11 +15,7 @@
     
     const orderBeingPrepared = () => new Promise((resolve, reject) => {
       setTimeout(() => {
-        //document.getElementById('order-status-img').src='assets/order-being-prepared.gif'
-        document.getElementById('order-status-img').src='assets/frying-pan.gif?v=' + Date.now()
-
-        console.log("Changed to:", document.getElementById('order-status-img').src) // TEST HERE
-        document.getElementById('order-status-img').style.border = "3px solid red" // TEST 2 HERE
+        document.getElementById('order-status-img').src='assets/order-being-prepared.gif'
         document.getElementById('order-status-txt').innerText = 'Order is being prepared 🍜'
         resolve()
       }, 2000)
@@ -28,8 +24,6 @@
     const orderPrepared = () => new Promise((resolve, reject) => {
       setTimeout(() => {
         document.getElementById('order-status-img').src='assets/order-is-ready.gif'
-        console.log("Changed to:", document.getElementById('order-status-img').src) // TEST HERE
-        document.getElementById('order-status-img').style.border = "3px solid red" // TEST 2 HERE
         document.getElementById('order-status-txt').innerText = 'Order prepared 🎉'
         resolve()
       }, 10000)
@@ -38,8 +32,6 @@
     const orderHandedOver = () => new Promise((resolve, reject) => {
       setTimeout(() => {
         document.getElementById('order-status-img').src='assets/order-handed-over.gif'
-        console.log("Changed to:", document.getElementById('order-status-img').src) // TEST HERE
-        document.getElementById('order-status-img').style.border = "3px solid red" // TEST 2 HERE
          document.getElementById('order-status-txt').innerText = 'Order handed to the delivery person 📦'
         resolve()
       }, 5000)
@@ -48,8 +40,6 @@
     const orderOnTheWay = () => new Promise((resolve, reject) => {
       setTimeout(() => {
         document.getElementById('order-status-img').src='assets/order-on-the-way.gif'
-        console.log("Changed to:", document.getElementById('order-status-img').src) // TEST HERE
-        document.getElementById('order-status-img').style.border = "3px solid red" // TEST 2 HERE
         document.getElementById('order-status-txt').innerText = 'Order is on the way 🚴'
         resolve()
       }, 3000)
@@ -57,9 +47,7 @@
 
     const orderReachedDestintaion = () => new Promise((resolve, reject) => {
       setTimeout(() => {
-        document.getElementById('order-status-img').src='assets/order-at-location.gif'
-        console.log("Changed to:", document.getElementById('order-status-img').src) // TEST HERE
-        document.getElementById('order-status-img').style.border = "3px solid red" // TEST 2 HERE
+        document.getElementById('order-status-img').src='assets/order-at-destination.gif'
         document.getElementById('order-status-txt').innerText = `Order reached its destination 📍`
         resolve()
       }, 8000)
@@ -68,21 +56,13 @@
     const orderDelivered = () => new Promise((resolve, reject) => {
       setTimeout(() => {
         document.getElementById('order-status-img').src='assets/order-delivered.gif'
-        console.log("Changed to:", document.getElementById('order-status-img').src) // TEST HERE
-        document.getElementById('order-status-img').style.border = "3px solid red" // TEST 2 HERE
         document.getElementById('order-status-txt').innerText = `Order has been delivered 😋`
         resolve()
       }, 4000)
     })
 
     const placeOrder = () => {
-      //document.getElementById('order-status-img').src='assets/order-confirmed.gif'
-      document.getElementById('order-status-img').src='assets/thumb-up.gif?v=' + Date.now()
-
-      console.log("Changed to:", document.getElementById('order-status-img').src) // TEST HERE
-      document.getElementById('order-status-img').style.border = "3px solid red" // TEST 2 HERE
-
-
+      document.getElementById('order-status-img').src='assets/order-confirmed.gif'
       document.getElementById('order-status-txt').innerText = 'Order confirmed ✅'
       orderBeingPrepared()
         .then(() => orderPrepared())
