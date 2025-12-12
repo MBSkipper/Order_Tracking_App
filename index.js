@@ -1,85 +1,73 @@
- /*
- 
- - Example: Order tracking app
-          - Instantly: Order confirmed ✅
-          - After 2 seconds: Order is being prepared 🍜
-          - After 10 seconds: Order prepared 🎉
-          - After 5 seconds: Order handed over to the delivery person 📦
-          - After 3 seconds: Order is on the way 🚴
-          - After 8 seconds: Order reached it's destination 📍
-          - After 4 seconds: Order has been delivered 😋
+  //_______ ORDER PROCESSING ON THE CARD (ASYNCHRONOUS)__________
 
-          Total processing time for order: 32 seconds
-    */
-
-    //_______ ORDER PROCESSING ON THE CARD (ASYNCHRONOUS)__________
-
-    const orderBeingPrepared = () => new Promise((resolve, reject) => {
+    const orderBeingPrepared = (orderNum) => new Promise((resolve, reject) => {
       setTimeout(() => {
-        document.getElementById('order-status-img').src='assets/order-being-prepared.gif'
-        document.getElementById('order-status-txt').innerText = 'Order is being prepared'
-        resolve()
+        document.getElementById(`order-status-img-${orderNum}`).src='assets/order-being-prepared.gif'
+        document.getElementById(`order-status-txt-${orderNum}`).innerText = 'Order is being prepared'
+        resolve(orderNum)
       }, 2000)
     })
 
-    const orderPrepared = () => new Promise((resolve, reject) => {
+    const orderPrepared = (orderNum) => new Promise((resolve, reject) => {
       setTimeout(() => {
-        document.getElementById('order-status-img').src='assets/order-is-ready.gif'
-        document.getElementById('order-status-txt').innerText = 'Order prepared'
-        resolve()
+        document.getElementById(`order-status-img-${orderNum}`).src='assets/order-is-ready.gif'
+        document.getElementById(`order-status-txt-${orderNum}`).innerText = 'Order prepared'
+        resolve(orderNum)
       }, 10000)
     })
 
-    const orderHandedOver = () => new Promise((resolve, reject) => {
+    const orderHandedOver = (orderNum) => new Promise((resolve, reject) => {
       setTimeout(() => {
-        document.getElementById('order-status-img').src='assets/order-handed-over.gif'
-         document.getElementById('order-status-txt').innerText = 'Order handed to the delivery person'
-        resolve()
+        document.getElementById(`order-status-img-${orderNum}`).src='assets/order-handed-over.gif'
+         document.getElementById(`order-status-txt-${orderNum}`).innerText = 'Order handed to the delivery person'
+        resolve(orderNum)
       }, 5000)
     })
 
-    const orderOnTheWay = () => new Promise((resolve, reject) => {
+    const orderOnTheWay = (orderNum) => new Promise((resolve, reject) => {
       setTimeout(() => {
-        document.getElementById('order-status-img').src='assets/order-on-the-way.gif'
-        document.getElementById('order-status-txt').innerText = 'Order is on the way'
-        resolve()
+        document.getElementById(`order-status-img-${orderNum}`).src='assets/order-on-the-way.gif'
+        document.getElementById(`order-status-txt-${orderNum}`).innerText = 'Order is on the way'
+        resolve(orderNum)
       }, 3000)
     })
 
-    const orderReachedDestintaion = () => new Promise((resolve, reject) => {
+    const orderReachedDestintaion = (orderNum) => new Promise((resolve, reject) => {
       setTimeout(() => {
-        document.getElementById('order-status-img').src='assets/order-at-destination.gif'
-        document.getElementById('order-status-txt').innerText = `Order reached its destination`
-        resolve()
+        document.getElementById(`order-status-img-${orderNum}`).src='assets/order-at-destination.gif'
+        document.getElementById(`order-status-txt-${orderNum}`).innerText = `Order reached its destination`
+        resolve(orderNum)
       }, 8000)
     })
 
-    const orderDelivered = () => new Promise((resolve, reject) => {
+    const orderDelivered = (orderNum) => new Promise((resolve, reject) => {
       setTimeout(() => {
-        document.getElementById('order-status-img').src='assets/order-delivered.gif'
-        document.getElementById('order-status-txt').innerText = `Order has been delivered`
-        resolve()
+        document.getElementById(`order-status-img-${orderNum}`).src='assets/order-delivered.gif'
+        document.getElementById(`order-status-txt-${orderNum}`).innerText = `Order has been delivered`
+        resolve(orderNum)
       }, 4000)
     })
 
     //__________ CREATING AN ORDER NUMBER _____________
-    let orderNum = 1 // creates the order number
+    let orderNum = 0 // creates the initial order number and holds increment
 
     //__________ PLACING THE ORDER _____________
     const placeOrder = () => {
+
+      orderNum++ // increments order number for the card being created
       
       createOrderCard()
 
-      document.getElementById('order-status-img').src='assets/order-confirmed.gif'
-      document.getElementById('order-status-txt').innerText = 'Order confirmed '
+      document.getElementById(`order-status-img-${orderNum}`).src='assets/order-confirmed.gif'
+      document.getElementById(`order-status-txt-${orderNum}`).innerText = 'Order confirmed '
 
-      orderBeingPrepared()
-        .then(() => orderPrepared())
-        .then(() => orderHandedOver())
-        .then(() => orderOnTheWay())
-        .then(() => orderReachedDestintaion())
-        .then(() => orderDelivered())
-        .then(() => console.log('Order processing completed'))
+      orderBeingPrepared(orderNum)
+        .then((orderNum) => orderPrepared(orderNum))
+        .then((orderNum) => orderHandedOver(orderNum))
+        .then((orderNum) => orderOnTheWay(orderNum))
+        .then((orderNum) => orderReachedDestintaion(orderNum))
+        .then((orderNum) => orderDelivered(orderNum))
+        .then((orderNum) => console.log(`Order number ${orderNum} completed processing`))
         .catch(() => console.log('Something went wrong'))
     }
 
@@ -161,11 +149,24 @@ function createOrderCard() {
   colDiv.append(cardDiv)
   orderList.append(colDiv)
 
-  orderNum++ //increments const orderNum ready for next card 
-
 }
 
 /*
+
+ 
+ - Example: Order tracking app
+          - Instantly: Order confirmed ✅
+          - After 2 seconds: Order is being prepared 🍜
+          - After 10 seconds: Order prepared 🎉
+          - After 5 seconds: Order handed over to the delivery person 📦
+          - After 3 seconds: Order is on the way 🚴
+          - After 8 seconds: Order reached it's destination 📍
+          - After 4 seconds: Order has been delivered 😋
+
+          Total processing time for order: 32 seconds
+  
+
+
     <div class="col-xl-4 col-md-6"> <!--start of grid column container -->
       <!--NOTE -the code col-lg-4 spans 4 columns so 3 cards shown on a lg screen and col-md-6 spans 2 cols so 2 cards will show on a medium screen.  Remember there are 12 columns on every screen-->
 
